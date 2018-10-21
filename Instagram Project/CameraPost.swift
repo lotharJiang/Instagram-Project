@@ -172,7 +172,9 @@ class CameraPost: UIViewController, UIImagePickerControllerDelegate, UINavigatio
             
             let boundary:String = "-------------------21212222222222222222222"
             request.setValue("multipart/form-data;boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            
             let body = NSMutableData()
+            /*
             body.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
             body.append("Content-Disposition: form-data; name=\"\("userEmail")\"\r\n".data(using: .utf8)!)
             body.append("Content-Type:text/plain;charset=utf-8\r\n\r\n".data(using: .utf8)!)
@@ -192,7 +194,7 @@ class CameraPost: UIViewController, UIImagePickerControllerDelegate, UINavigatio
             body.append("Content-Disposition: form-data; name=\"\("log")\"\r\n".data(using: .utf8)!)
             body.append("Content-Type:text/plain;charset=utf-8\r\n\r\n".data(using: .utf8)!)
             body.append("\(logi)\r\n".data(using: .utf8)!)
-            
+            */
             body.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
             body.append("Content-Disposition: form-data; name=\"postPic\"; filename=\"tmpImage.png\"\r\n".data(using: .utf8)!)
             body.append("Content-Type:application/octet-stream\r\n\r\n".data(using: .utf8)!)

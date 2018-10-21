@@ -134,8 +134,8 @@ class Userfeed: UITableViewController, CLLocationManagerDelegate {
     
     func loadDataFromIndex(startIndex:Int){
         var postID = "-1"
-        if startIndex != 0 {
-            postID = self.postArray[startIndex].postID ?? "-1"
+        if startIndex != 0 && startIndex < postArray.count {
+            postID = self.postArray[startIndex].postID!
         }
         
         if currentSortType == .Location {
@@ -217,7 +217,7 @@ class Userfeed: UITableViewController, CLLocationManagerDelegate {
             
         else if currentSortType == .Time{
             //load 10 data from index to postArray (sorted by time)
-            let url = NSURL(string:"http://115.146.84.191:3333/api/acquireLatestPostsByTime/\(loginUser)/\(postID)")
+            let url = NSURL(string:"http://115.146.84.191:3333/api/acquireLatestPostsByTime/\(loginUser)/\(postID)".replacingOccurrences(of: " ", with: "%20"))
             let request = NSMutableURLRequest(url:url! as URL);
             request.httpMethod = "GET";
             
